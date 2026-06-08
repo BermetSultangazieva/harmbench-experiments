@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J harmbench_hj_qwen30b
+#SBATCH -J harmbench_hj_qwen2.5_32b
 #SBATCH -A MLMI-bs816-SL2-GPU
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -19,9 +19,9 @@ export HF_HOME=/rds/user/bs816/hpc-work/hf_cache
 export TRANSFORMERS_CACHE=/rds/user/bs816/hpc-work/hf_cache
 export HF_HUB_CACHE=/rds/user/bs816/hpc-work/hf_cache/hub
 
-HARMBENCH_DIR="/rds/user/bs816/hpc-work/exp_diss/HarmBench"
+HARMBENCH_DIR="/rds/user/bs816/hpc-work/exp_diss/harmbench-experiments"
 
-MODEL_KEY="qwen3_30B_instruct"
+MODEL_KEY="qwen2.5_14b_instruct"
 METHOD="HumanJailbreaks"
 
 BEHAVIORS_PATH="$HARMBENCH_DIR/data/behavior_datasets/harmbench_behaviors_copyright_only.csv"

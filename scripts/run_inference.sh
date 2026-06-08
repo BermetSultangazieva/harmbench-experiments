@@ -19,7 +19,7 @@ export HF_HOME=/rds/user/bs816/hpc-work/hf_cache
 export TRANSFORMERS_CACHE=/rds/user/bs816/hpc-work/hf_cache
 export HF_HUB_CACHE=/rds/user/bs816/hpc-work/hf_cache/hub
 
-HARMBENCH_DIR="/rds/user/bs816/hpc-work/exp_diss/HarmBench"
+HARMBENCH_DIR="/rds/user/bs816/hpc-work/exp_diss/harmbench-experiments"
 MODEL_KEY="llama3.2_1b_instruct"
 METHOD="DirectRequest"
 
