@@ -3,7 +3,7 @@
 #SBATCH -A MLMI-bs816-SL2-GPU
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:2
 #SBATCH --time=04:00:00
 #SBATCH --mail-type=NONE
 #SBATCH -p ampere
@@ -19,9 +19,11 @@ export HF_HOME=/rds/user/bs816/hpc-work/hf_cache
 export TRANSFORMERS_CACHE=/rds/user/bs816/hpc-work/hf_cache
 export HF_HUB_CACHE=/rds/user/bs816/hpc-work/hf_cache/hub
 
+export VLLM_USE_FLASHINFER_SAMPLER=0
+
 HARMBENCH_DIR="/rds/user/bs816/hpc-work/exp_diss/harmbench-experiments"
 
-MODEL_KEY="qwen2.5_14b_instruct"
+MODEL_KEY="qwen2.5_72b_instruct"
 METHOD="HumanJailbreaks"
 
 BEHAVIORS_PATH="$HARMBENCH_DIR/data/behavior_datasets/harmbench_behaviors_copyright_only.csv"
@@ -53,6 +55,7 @@ python generate_completions.py \
     --test_cases_path $TEST_CASES_PATH \
     --save_path $SAVE_PATH \
     --max_new_tokens 512 \
+    --generate_with_vllm \
     > $HARMBENCH_DIR/logs/completions_${MODEL_KEY}_${METHOD}_${JOBID}.log 2>&1
 
 echo "Finished: $(date)"
